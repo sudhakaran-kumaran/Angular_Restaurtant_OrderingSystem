@@ -1,0 +1,73 @@
+<body>
+  <section class="main vh-100">
+    <div class="container py-5 h-100">
+      <div class="row d-flex align-items-center justify-content-center h-100">
+        <div class="col-6 container-fluid" id="lottie-container">
+          <ng-lottie [options]="options"></ng-lottie>
+        </div>
+
+        <div class="col-6 h-50 w-50" id="login-form">
+          <form
+            #loginForm="ngForm"
+            (ngSubmit)="login(loginForm)"
+            class="mx-5 container h-75 w-100 px-5"
+          >
+            <h2 class="display-3 fs-1 text-primary">LOGIN PAGE</h2>
+            <!-- Username input -->
+            <div class="form-outline mb-3">
+              <label class="form-label display-3 fs-4" for="username"
+                >Username</label
+              >
+              <input
+                type="text"
+                class="form-control w-75"
+                name="username"
+                [(ngModel)]="username"
+                placeholder="Please Enter your username"
+              />
+            </div>
+            <!-- <div *ngIf="username.invalid" class="invalid-feedback">
+              Username must be atleast 3 characters
+
+            </div> -->
+
+            <!-- Password input -->
+            <div class="form-outline mb-3">
+              <label class="form-label display-3 fs-4 w-50" for="password"
+                >Password</label
+              >
+              <input
+                type="password"
+                class="form-control w-75"
+                name="password"
+                [(ngModel)]="password"
+                placeholder="Please Enter your password"
+              />
+            </div>
+
+            <p
+              class="error"
+              [ngClass]="error.length > 0 ? 'visible' : 'invisible'"
+            >
+              {{ error }}
+            </p>
+
+            <div class="d-flex align-items-center mb-4 reg">
+              <span>Not registered?</span>
+              <a
+                routerLink="/register"
+                class="text-primary text-decoration-none px-2"
+                >Register here</a
+              >
+            </div>
+
+            <!-- Submit button -->
+            <div class="d-grid gap-2">
+              <button type="submit" class="btn btn-primary w-75">Login</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>

@@ -1,0 +1,35 @@
+/* In your Angular component CSS file */
+.container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .order-table table,
+  .order-summary table {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .order-summary table {
+    margin-top: 20px;
+  }
+  
+  .order-summary table th,
+  .order-summary table td {
+    text-align: center;
+  }
+  
+  .order-summary p {
+    text-align: right;
+  }
+  
+  .order-summary button {
+    float: right;
+  }
+  

@@ -1,0 +1,150 @@
+<div class="d-flex justify-content-between align-items-center mt mt-5">
+  <h1 Style="font-family: 'Times New Roman';" class="fs-2 text-primary">
+    DishList
+  </h1>
+  <button
+    type="button"
+    class="btn btn-success text-white"
+    data-bs-toggle="modal"
+    data-bs-target="#exampleModal"
+    data-bs-whatever="@mdo"
+    class="btn btn-primary"
+  >
+    + AddProducts
+  </button>
+</div>
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Add Products</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="onSubmit(dishForm)" #dishForm="ngForm">
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Title</label>
+            <input
+              type="text"
+              class="form-control"
+              id="recipient-name"
+              name="title"
+              ngModel
+            />
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label"
+              >Category ID</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="recipient-name"
+              name="categoryId"
+              ngModel
+            />
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label"
+              >Description</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="recipient-name"
+              name="description"
+              ngModel
+            />
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Prie</label>
+            <input
+              type="number"
+              class="form-control"
+              id="recipient-name"
+              name="price"
+              ngModel
+            />
+          </div>
+          <div class="form-group mb-2">
+            <label class="control-label mb-2" for="filebutton">Photo</label>
+            <div class="col-6">
+              <input
+                id="filebutton"
+                name="photo"
+                class="input-file"
+                type="file"
+                ngModel
+                (change)="onFileChange($event)"
+              />
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary text-warning">
+            ADD
+          </button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="mx-2 btn btn-dark" data-bs-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-1">
+  <table class="table table-bordered text-center">
+    <thead class="thead-dark">
+      <tr class="table-primary">
+        <th>S.No</th>
+        <th>Dish Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let dish of dishes">
+        <td>{{ dish.id }}</td>
+        <td>{{ dish.title }}</td>
+        <td>{{ dish.description }}</td>
+        <td>{{ dish.price }}</td>
+
+        <td>
+          <button
+            type="button"
+            class="btn btn-warning text-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+            data-bs-whatever="@mdo"
+            (click)="updateDish(dish)"
+          >
+            <i class="fas fa-pencil-alt btn-warning"></i>
+            Edit
+          </button>
+        </td>
+        <td>
+          <button
+            class="btn btn-danger text-white w-50 btn-primary"
+            (click)="delete(dish.id)"
+          >
+            <i class="fas fa-trash-alt text-warning w-50"></i> Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

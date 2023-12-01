@@ -1,0 +1,30 @@
+<!-- In your Angular component template -->
+<div class="container">
+  <header>
+    <h1 class="fs-2 text-primary">Welcome to SpicyHut</h1>
+    <p class="fs-4 text-primary">Order your favorite food!</p>
+  </header>
+
+  <section class="order-table">
+    <table class="table">
+      <thead>
+        <tr class="table-primary">
+          <th>Item</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th>Order Status</th>
+
+        </tr>
+      </thead>
+      <tbody *ngFor="let item of menuItems">
+        <tr >
+          <td>{{ item.name }}</td>
+          <td>{{ item.description }}</td>
+          <td>${{ item.price.toFixed(2) }}</td>
+          <td>Pending</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+  <button class="btn btn-success">Place Order</button>
+ </div>

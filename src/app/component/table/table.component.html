@@ -1,0 +1,84 @@
+<div class="d-flex justify-content-between align-items-center mt mt-5">
+  <h1 class="fs-3 text-primary display-4 mt-4">TABLE DETAILS</h1>
+  <button
+    type="button"
+    class="btn btn-primary text-warning"
+    data-bs-toggle="modal"
+    data-bs-target="#exampleModal"
+    data-bs-whatever="@mdo"
+  >
+    + AddTable
+  </button>
+</div>
+
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="btn btn-primary" id="exampleModalLabel">Add Table</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">USER ID</label>
+            <input
+              type="number"
+              class="form-control"
+              
+            />
+          </div>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+          <button type="submit" class="btn btn-danger text-dark">Add</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-5">
+  <br />
+  <br />
+  <table class="table table-bordered text-center">
+    <thead class="thead-dark">
+      <tr class="table-primary">
+        <th>Id</th>
+        <th>UserId</th>
+        <th>Joined At</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let table of tables">
+        <td>{{ table.id }}</td> 
+        <td>{{ table.appUser.id }}</td>
+        <td>{{ table.createdAt }}</td>
+        <td>
+          <button class="btn btn-dark w-25">
+            <i class="fas fa-pencil-alt btn-warning"></i> Edit
+          </button>
+          <button class="btn btn-danger text-white w-25 btn-primary">
+            <i class="fas fa-trash-alt text-warning"></i> Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

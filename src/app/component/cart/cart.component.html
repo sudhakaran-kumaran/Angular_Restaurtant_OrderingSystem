@@ -1,0 +1,43 @@
+<div class="container mt-5">
+  <br />
+  <br />
+  <table class="table table-bordered text-center">
+    <thead class="thead-dark">
+      <tr class="table-primary">
+        <th>S.No</th>
+        <th>Dish</th>
+        <th>Quantity</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cart of carts; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ cart.dishTitle }}</td>
+        <td>{{ cart.count }}</td>
+        <td>{{ cart.price }}</td>
+        <!-- <td>Total : {{cart.price}}</td> -->
+      </tr>
+      <tr class="rowspan">
+        <td></td>
+        <td></td> 
+        <td>Total : {{Total}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="d-flex justify-content-end">
+  <div class="d-flex justify-content-between align-items-center mt mt-5">
+    <button
+      type="button"
+      class="btn btn-primary text-warning d-flex justify-content-end mx-2"
+      data-bs-toggle="modal"
+      data-bs-target="#exampleModal"
+      data-bs-whatever="@mdo"
+      (click)="checkout()"
+    >
+      CheckOut
+    </button>
+    <button class="btn btn-warning" (click)="back()">Continue Ordering</button>
+  </div>
+</div>
