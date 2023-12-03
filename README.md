@@ -1,4 +1,4 @@
-# Angular_Restaurant_OrderingSystem
+# Angular_OrderingSystem
 
 
 **Description**
@@ -28,8 +28,8 @@
 ![image](https://github.com/sudhakaran-kumaran/SpringBoot_Restaurant_OrderingSystem/assets/145538233/e6537cd5-f1c2-4bdb-a4b4-35f5da5476e4)
 ![image](https://github.com/sudhakaran-kumaran/SpringBoot_Restaurant_OrderingSystem/assets/145538233/0fb136c9-d17b-415d-9803-8499a8cbac36)
 ![image](https://github.com/sudhakaran-kumaran/SpringBoot_Restaurant_OrderingSystem/assets/145538233/96f48259-472e-4ae5-b909-ba2003817102)
+![image](https://github.com/sudhakaran-kumaran/SpringBoot_Restaurant_OrderingSystem/assets/145538233/ece7b2fc-bf6d-4837-96ac-8a93de6e5318)
 ![image](https://github.com/sudhakaran-kumaran/SpringBoot_Restaurant_OrderingSystem/assets/145538233/064fcc01-1ebc-4e4a-a142-2670eed1814e)
-![image](https://github.com/sudhakaran-kumaran/SpringBoot_Restaurant_OrderingSystem/assets/145538233/dbdbd4aa-ca95-4ccf-b709-9e80a9d3376c)
 ![image](https://github.com/sudhakaran-kumaran/Angular_Restaurtant_OrderingSystem/assets/145538233/95ccc048-280a-461a-8265-a6db26548538)
 
 
