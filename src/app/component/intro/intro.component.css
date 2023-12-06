@@ -21,9 +21,7 @@ a {
 	width: 100%;
 	background: #b80818
 }
-.bg-color {
-	/* background: #b80818; */
-}
+
 .main-section {
 	padding-top: 120px;
 	padding-bottom: 120px;
@@ -31,7 +29,7 @@ a {
 /******* NAVBAR SECTION NAVBAR SECTION*******/
 .navbar-brand img {
 	width: auto;
-	height: 70px;
+	height: 50px;
 }
 .collapse {
 	position: relative;

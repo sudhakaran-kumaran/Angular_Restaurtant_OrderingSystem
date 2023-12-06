@@ -1,8 +1,16 @@
+<style>
+  .main {
+    height: 100vh; /* Adjust the height as needed */
+    overflow-y: auto;
+  }
+</style>
+
 <p class="fs-3 text-primary display-4 mt-4">ORDER DETAILS</p>
+<p class="fs-3 text-primary display-4 mt-4">ALL ORDERS</p>
 <div>
   <!-- <h2 >All Orders</h2> -->
-  <button (click)="getAllOrders()" class="btn btn-primary" (click)="getAllOrders()">Get All Orders</button><br />
-
+  <!-- <button (click)="getAllOrders()" class="btn btn-primary" (click)="getAllOrders()">Get All Orders</button><br /> -->
+<div class="main">
   <table class="table table-bordered mt-2">
     <thead>
       <tr>
@@ -10,8 +18,10 @@
         <th scope="col">User ID</th>
         <th scope="col">Status</th>
       </tr>
+      
     </thead>
     <tbody id="table">
+      
       <tr *ngFor="let order of orders">
         <td>{{ order.id }}</td>
         <td>{{ order.userId }}</td>
@@ -21,6 +31,7 @@
       </tr>
     </tbody>
   </table>
+  
   <div>
     <h2 class="text-primary">Update Order Status</h2>
     <table>
@@ -60,7 +71,7 @@
     </li>
   </ul>
 </div>
-
+</div>
 <!-- <table class="table">
     <thead>
       <tr>

@@ -16,11 +16,11 @@
 
         </tr>
       </thead>
-      <tbody *ngFor="let item of menuItems">
+      <tbody *ngFor="let order of orders">
         <tr >
-          <td>{{ item.name }}</td>
-          <td>{{ item.description }}</td>
-          <td>${{ item.price.toFixed(2) }}</td>
+          <td>{{ order.id }}</td>
+          <td>{{ order }}</td>
+          <td>${{order }}</td>
           <td>Pending</td>
         </tr>
       </tbody>

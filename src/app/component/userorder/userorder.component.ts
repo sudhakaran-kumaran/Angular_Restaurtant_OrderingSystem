@@ -18,7 +18,7 @@ export class UserorderComponent  implements OnInit {
     let app:AppUser=this.storageService.getLoggedInUser();
     this.orderService.getUserOrder(app.id).subscribe({
       next: (response: any) => {
-        
+        this.orders=response.data;
       },
 
       

@@ -1,7 +1,7 @@
 export interface OrderedDish {
     id:number;
-    title:String;
-    description:String;
+    title:string;
+    description:string;
     price:number;
     count:number;
 }
