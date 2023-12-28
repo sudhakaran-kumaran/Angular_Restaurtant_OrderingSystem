@@ -1,15 +1,18 @@
+import { FileType } from "./file-type";
 import { OrderedDish } from "./ordered-dish";
 import { Table } from "./table";
 
 export interface Order {
     id?:number;
-    orderedDish?:OrderedDish[];
+    dishList?:OrderedDish[];
     userId:number;
     tableId?:number,
-    userName?:String;
+    username?:String;
     name?: String;
     table?:Table;
     statusID?:number;
-    orderStatus?:String;
+    orderStatus?:number;
+    photo?:FileType;
+    createdAt?:string;
     
 }

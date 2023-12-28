@@ -15,12 +15,13 @@
         <td>{{ i + 1 }}</td>
         <td>{{ cart.dishTitle }}</td>
         <td>{{ cart.count }}</td>
-        <td>{{ cart.price }}</td>
-        <!-- <td>Total : {{cart.price}}</td> -->
+        <td>{{ cart.price * cart.count }}</td>
+       
       </tr>
       <tr class="rowspan">
         <td></td>
         <td></td> 
+        <td>Get Total</td>
         <td>Total : {{Total}}</td>
       </tr>
     </tbody>
@@ -35,6 +36,7 @@
       data-bs-target="#exampleModal"
       data-bs-whatever="@mdo"
       (click)="checkout()"
+      
     >
       CheckOut
     </button>

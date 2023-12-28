@@ -175,3 +175,6 @@ body {
   left: 45%;
 }
 
+.cursor{
+  cursor: pointer;
+}

@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { HomeService } from 'src/app/service/home.service';
 import { Dish } from 'src/app/model/dish';
-import { Category } from 'src/app/model/category';
-import { CategoryService } from 'src/app/service/category.service';
 import { Route, Router } from '@angular/router';
 import { AppResponse } from 'src/app/model/appResponse';
 import { AppUser } from 'src/app/model/appUser';
@@ -22,13 +18,15 @@ export class HomeComponent implements OnInit{
   dishes: Dish[] = [];
   userCart: Cart[] = [];
   dishTitle: string = '';
+  count=1;
 
   constructor(
     private authService: AuthService,
     private dishService: DishService,
     private cartService: CartService,
-    private storageservice: StorageService
-  ) {}
+    private storageservice: StorageService,
+
+    ) {}
   logout(): void {
     this.authService.logout();
   }
@@ -61,17 +59,17 @@ export class HomeComponent implements OnInit{
       dishId: dish.id,
       dish: dish,
       dishTitle: '',
-      count: 1,
+      count: this.count++,
       price: 0,
       id: 0,
     };
-    console.log(Cart);
-
+    console.log(Cart.count);
     this.cartService.addCart(Cart).subscribe({
       next: (response: AppResponse) => {
         this.userCart.push(response.data);
       }
     });
   }
+  
 }
 

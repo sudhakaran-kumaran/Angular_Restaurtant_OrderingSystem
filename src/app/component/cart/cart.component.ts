@@ -24,18 +24,18 @@ export class CartComponent implements OnInit {
     private storageService: StorageService,
     private userService: UserService,
     private router: Router,
-    private orderService:OrderService
+    private orderService: OrderService
   ) {}
   error: string = '';
   carts: Cart[] = [];
-  statusId:number=0;
-  orderStatus:string="";
-  dish:string='';
-  emptyCart:Boolean=true;
-  userOrder:Order[]=[];
-  currentorder:Order|undefined;
+  statusId: number = 0;
+  orderStatus: string = '';
+  dish: string = '';
+  emptyCart: Boolean = true;
+  userOrder: Order[] = [];
+  currentorder: Order | undefined;
   userId: number = this.storageService.getLoggedInUser().id;
-  Total:number=0;
+  Total: number = 0;
   ngOnInit(): void {
     this.getUserCart();
   }
@@ -44,6 +44,7 @@ export class CartComponent implements OnInit {
     this.cartService.getUserCart(this.userId).subscribe({
       next: (response: any) => {
         this.carts = response.data.cartRequests;
+        this.Total = this.carts.reduce((total, cart) => total + (cart.price * cart.count), 0);
         // console.log(response);
       },
       error: (err) => {
@@ -57,7 +58,7 @@ export class CartComponent implements OnInit {
     this.authService.logout();
   }
 
-  AddtoCart(id: number) {
+  addtoCart(id: number) {
     let user: AppUser = this.storageService.getLoggedInUser();
     const existingCartItem = this.carts.find(
       (cartItem) => cartItem.dishId === id
@@ -75,7 +76,6 @@ export class CartComponent implements OnInit {
           categoryId: 0,
           description: '',
           price: 0,
-          
         },
         dishTitle: '',
         count: 0,
@@ -97,34 +97,48 @@ export class CartComponent implements OnInit {
     }
   }
   loadUserDetails() {
-    const userId = this.storageService.getLoggedInUser().id;
     this.userService.getAllUsers().subscribe((response: AppResponse) => {
       if (response && response.data && Array.isArray(response.data)) {
-        const loguser=this.storageService.getLoggedInUser();
-        if(loguser){
-          const order={
-            userId:3,
-            tableId:1
+        const loguser = this.storageService.getLoggedInUser();
+        if (loguser) {
+          const order = {
+            userId: this.userId,
+            tableId: 1,
           };
           this.orderService.postOrder(order).subscribe({
-            next:(response:AppResponse)=>{
-              this.currentorder=response.data;
-              this.carts=[];
-              this.emptyCart=true;
-            }
-          })
+            next: (response: AppResponse) => {
+              this.currentorder = response.data;
+              this.carts = [];
+              this.emptyCart = true;
+            },
+          });
         }
       }
     });
   }
+  // Inside your CartComponent class
+
+  getTotal(): number | undefined {
+    console.log('clicked');
+
+    try {
+      return this.carts.reduce((sum, cart) => sum + cart.price * cart.count, 0);
+    } catch (error) {
+      console.error('Error calculating total:', error);
+      return undefined;
+    }
+  }
+
   checkout(): void {
     const user = this.storageService.getLoggedInUser();
     if (user) {
       this.loadUserDetails();
     }
+    this.router.navigate(['/home']);
   }
   placeorder(): void {}
   back(): void {
     this.router.navigate(['/home']);
   }
+  
 }

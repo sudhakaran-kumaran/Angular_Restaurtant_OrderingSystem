@@ -92,7 +92,7 @@ nav .social-media a {
 	}
 }
 .footer {
-    background-color: #343a40;
+    background-color: rgba(0, 0, 0, 0.885);
     color: #ffffff;
     padding: 40px 0;
   }
@@ -118,7 +118,7 @@ nav .social-media a {
   }
 
   nav {
-    background-color: rgba(0, 0, 0, 0.347); /* Adjust the alpha value to control the transparency */
+    background-color: rgba(0, 0, 0, 0.7); /* Adjust the alpha value to control the transparency */
     overflow: hidden;
   }
 
@@ -170,7 +170,7 @@ nav .social-media a {
   }
   /*******FOOTER Section FOOTER Section********/
 .footer-section {
-	background-image: linear-gradient(to bottom, rgba(0, 0, 0, 16%) 0%, rgba(0, 0, 0, 0.7) 100%);
+	background-color: rgba(0, 0, 0, 0.7);
 	background-repeat: no-repeat;
 	padding: 100px 0px 0px 0px;
 	font-family :'Raleway';
@@ -359,3 +359,90 @@ nav .social-media a {
 	border-radius: 50px;
 	color: tomato;
 }
+.product-card {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .product-card .card-img-top {
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .product-card:hover .card-img-top {
+    transform: scale(1.1);
+  }
+
+  
+
+  .product-card:hover .add-to-cart-message {
+    opacity: 1;
+  }
+
+  
+  .famous-product {
+    border: 1px solid lightgrey;
+    padding: 20px;
+    border-radius: 30px;
+    background: #fff;
+    color: black;
+    margin-bottom: 30px;
+  }
+  .famous-product img {
+    width: 100%;
+  }
+  .famous-product h2 {
+    font-size: 18px;
+    color: #f44336;
+  }
+  .famous-product h3 {
+    margin-bottom: 20px;
+    font-size: 26px;
+    font-weight: 600;
+    color: #4e4e4e;
+  }
+  .famous-product .price {
+    position: relative;
+  }
+  .famous-product .price h4 {
+    margin: 0px;
+  }
+  .famous-product .price span {
+    position: absolute;
+    top: 5px;
+    right: 0px;
+  }
+  .famous-product .price i {
+    width: 50px;
+    height: 50px;
+    border: 1px solid;
+    font-size: 22px;
+    padding: 14px;
+    text-align: center;
+    border-radius: 50px;
+    color: tomato;
+  }
+
+  
+.search-container {
+	display: flex;
+	align-items: center;
+  }
+  
+  /* .search-container input {
+	padding: 6px;
+	margin: 0;
+	border: none;
+	border-bottom: 1px solid #fff; /* You can adjust the border color */
+	/* outline: none;
+	background: transparent;
+	color: #fff; /* You can adjust the text color */
+    
+  
+  .search-container .search-icon {
+	margin-left: 5px;
+	cursor: pointer;
+  }
+  .rad{
+	border-radius: 12px;
+  }
+  

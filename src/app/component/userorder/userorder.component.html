@@ -1,30 +1,38 @@
 <!-- In your Angular component template -->
-<div class="container">
-  <header>
-    <h1 class="fs-2 text-primary">Welcome to SpicyHut</h1>
-    <p class="fs-4 text-primary">Order your favorite food!</p>
-  </header>
+<style>
+  .main {
+    height: 90vh; /* Adjust the height as needed */
+    overflow-y: auto;
+  }
+</style>
+<div class="main">
+  <div class="container">
+    <header>
+      <h1 class="fs-2 text-primary">Welcome to SpicyHut</h1>
+      <p class="fs-4 text-primary">Order your favorite food!</p>
+    </header>
 
-  <section class="order-table">
-    <table class="table">
-      <thead>
-        <tr class="table-primary">
-          <th>Item</th>
-          <th>Description</th>
-          <th>Price</th>
-          <th>Order Status</th>
-
-        </tr>
-      </thead>
-      <tbody *ngFor="let order of orders">
-        <tr >
-          <td>{{ order.id }}</td>
-          <td>{{ order }}</td>
-          <td>${{order }}</td>
-          <td>Pending</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
-  <button class="btn btn-success">Place Order</button>
- </div>
+    <section class="order-table">
+      <table class="table">
+        <thead>
+          <tr class="table-primary">
+            <th>Title</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Order Status</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let order of orders">
+          <tr *ngFor="let dish of order.dishList; let i = index">
+            <td>{{ dish.title }}</td>
+            <td>{{ dish.description }}</td>
+            <td>{{ dish.price }}</td>
+            <!-- Add more properties as needed -->
+            <td>{{ order.orderStatus }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    <button class="btn btn-success">Place Order</button>
+  </div>
+</div>

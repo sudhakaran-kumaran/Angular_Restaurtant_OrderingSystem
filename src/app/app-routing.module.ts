@@ -22,19 +22,19 @@ import { UserorderComponent } from './component/userorder/userorder.component';
 
 
 const routes: Routes = [
-  {path:'user',component:UserComponent},
-  {path:'table',component:TableComponent},
-  { path: 'login', component: LoginComponent },
+  {path:'user',component:UserComponent,canActivate:[authGuard]},
+  {path:'table',component:TableComponent,canActivate:[authGuard]},
+  { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
-  {path:'dish',component:DishComponent},
+  {path:'dish',component:DishComponent,canActivate:[authGuard]},
   { path: 'home', component: HomeComponent},
-  { path: 'admin', component: AdminHomeComponent},
-  {path:'admincategory',component:CategoryComponent},
-  {path:'cart',component:CartComponent},
-  {path:'admindish',component:AdmindishComponent},
-  {path:'order',component:OrderComponent},
+  { path: 'admin', component: AdminHomeComponent,canActivate:[authGuard]},
+  {path:'admincategory',component:CategoryComponent,canActivate:[authGuard]},
+  {path:'cart',component:CartComponent,canActivate:[authGuard]},
+  {path:'admindish',component:AdmindishComponent,canActivate:[authGuard]},
+  {path:'order',component:OrderComponent,canActivate:[authGuard]},
   {path:'',component:IntroComponent},
-  {path:'userorder',component:UserorderComponent}
+  {path:'userorder',component:UserorderComponent,canActivate:[authGuard]}
   
 
 ];

@@ -7,5 +7,6 @@ export interface Dish {
     categoryId: number,
     description:string,
     price:number,
-    photo?:FileType
+    photo?:FileType,
+    count?:number
 }

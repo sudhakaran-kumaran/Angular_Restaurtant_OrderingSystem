@@ -11,7 +11,7 @@ import { Dish } from '../model/dish';
 export class DishService {
   constructor(private http: HttpClient) {}
 
-  updateDish(editDish : Dish) : Observable<AppResponse>{
+  updateDish(editDish : FormData) : Observable<AppResponse>{
     return this.http.put<AppResponse>(`${urlEndpoint.baseUrl}/admin/dish/update`,editDish);
   }
   deleteDish(id:number) : Observable<AppResponse> {
@@ -24,7 +24,7 @@ export class DishService {
     );
   }
   getAllDish(): Observable<AppResponse> {
-    console.log("hiii");
+    console.log("hiii iam selvin");
     
     return this.http.get<AppResponse>(`${urlEndpoint.baseUrl}/admin/dish/all`);
   }

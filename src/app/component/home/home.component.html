@@ -11,7 +11,7 @@
 
   .product-card:hover .card-img-top {
     transform: scale(1.1);
-  }
+  } 
 
   .add-to-cart-message {
     position: absolute;
@@ -31,10 +31,6 @@
     opacity: 1;
   }
 
-  .main {
-    height: 100vh; /* Adjust the height as needed */
-    overflow-y: auto;
-  }
   .famous-product {
     border: 1px solid lightgrey;
     padding: 20px;
@@ -78,29 +74,38 @@
     color: tomato;
   }
   .main {
-    height: 100vh; /* Adjust the height as needed */
-    overflow-x: auto;
+    height: 90vh; /* Adjust the height as needed */
+    overflow-y: auto;
   }
 </style>
 <p class="fs-3 text-primary display-4 mt-4">DISH LIST</p>
 
 <div class="main">
   <div class="row">
-    <div class="col-lg-3 col-md-6 mb-4" *ngFor="let dish of dishes">
-      <div class="product-card  ">
+    <div
+      class="col-lg-3 col-md-6 mb-4 cursor"
+      *ngFor="let dish of dishes"
+      (click)="addtoCart(dish)"
+    >
+      <div class="product-card">
         <div class="famous-product p-5">
           <h2 class="fs-2">{{ dish.title }}</h2>
           <h3>{{ dish.description }}</h3>
-          <img class="card-img-top" src="{{ 'http://localhost:8080/api/admin/dish/downloadFile/' + dish.id }}" width="200px" height="200px" alt="Card image cap" />
+          <img
+            class="card-img-top"
+            src="{{
+              'http://localhost:8080/api/admin/dish/downloadFile/' + dish.id
+            }}"
+            width="200px"
+            height="200px"
+            alt="Card image cap"
+          />
           <div class="card-body">
             <h4 class="fs-2">₹ {{ dish.price }}</h4>
-            <button class="btn btn-primary" (click)="addtoCart(dish)">
-              ADD TO CART
-            </button>
+            <i class="fa fa-shopping-cart" style="font-size: 24px"></i>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-

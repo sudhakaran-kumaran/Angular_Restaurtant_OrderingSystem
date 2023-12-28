@@ -20,11 +20,15 @@
       <div class="col-6" id="lottie-container">
         <ng-lottie [options]="options"></ng-lottie>
       </div>
-      
+
       <div class="col-6" id="login-form">
-        <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)" class="mx-5 container h-75 w-100 px-5">
-        <h2 class="display-3 fs-1 text-primary">REGISTER PAGE</h2>
-        
+        <form
+          #registerForm="ngForm"
+          (ngSubmit)="onSubmit(registerForm)"
+          class="mx-5 container h-75 w-100 px-5"
+        >
+          <h2 class="display-3 fs-1 text-primary">REGISTER PAGE</h2>
+
           <!-- Username input -->
           <div class="form-outline mb-3">
             <label class="form-label display-3 fs-4" for="username">Name</label>
@@ -50,7 +54,7 @@
               please enter the name min 3 characters
             </div>
           </div>
- 
+
           <!-- Name input -->
           <div class="form-outline mb-3">
             <label class="form-label display-3 fs-4" for="name">UserName</label>
@@ -74,10 +78,12 @@
               please enter the name min 3 characters
             </div>
           </div>
- 
+
           <!-- Password input -->
           <div class="form-outline mb-3">
-            <label class="form-label display-3 fs-4" for="password">Password</label>
+            <label class="form-label display-3 fs-4" for="password"
+              >Password</label
+            >
             <input
               type="password"
               id="password"
@@ -122,8 +128,7 @@
               Password is mismatch
             </div>
           </div>
- 
-         
+
           <div class="form-outline mb-3">
             <label class="form-label" for="dropdown">Select Option</label>
             <select
@@ -139,15 +144,14 @@
               "
             >
               <option value="" disabled selected>Select an option</option>
-             
+
               <option value="option2">User</option>
-             
             </select>
             <div *ngIf="dropdownValid.invalid" class="invalid-feedback">
               Please select an option.
             </div>
           </div>
- 
+
           <div class="d-flex align-items-center mb-4">
             <span>Already registered?</span>
             <a
@@ -156,16 +160,10 @@
               >Login here</a
             >
           </div>
- 
+
           <!-- Submit button -->
           <div class="d-grid gap-2 mb-5">
-            <button
-              type="submit"
-              class="btn btn-primary w-75"
-              [disabled]="registerForm.invalid"
-            >
-              Register
-            </button>
+            <button type="submit" class="btn btn-primary w-75">Register</button>
           </div>
         </form>
       </div>

@@ -10,15 +10,26 @@ import { StorageService } from './storage.service';
   providedIn: 'root'
 })
 export class OrderService  {
+  // }
+  setStatus(statusReq: any):Observable<AppResponse> {
+    throw new Error('Method not implemented.');
+  }
   
   postOrder(order:Order) : Observable<AppResponse> {
     return this.http.post<AppResponse>(`${urlEndpoint.baseUrl}/order`,order);
   }
-  updateOrderStatus() : Observable<AppResponse> {
-    throw new Error('Method not implemented.');
+  updateOrderStatus(orderId:number,statusId:number) : Observable<AppResponse> {
+    const setStatus={
+      orderId:orderId,
+      statusId:statusId
+    }
+    return this.http.put<AppResponse>(`${urlEndpoint.baseUrl}admin/order/updatestatus`,setStatus);
+
+    
+  
   }
   getAllOrderStatus() : Observable<AppResponse> {
-    throw new Error('Method not implemented.');
+    return this.http.get<AppResponse>(`${urlEndpoint.baseUrl}/order/status/all`);
   }
   getUserOrder(id:number) : Observable<AppResponse> {
     const userId=this.storageService.getLoggedInUser().id;

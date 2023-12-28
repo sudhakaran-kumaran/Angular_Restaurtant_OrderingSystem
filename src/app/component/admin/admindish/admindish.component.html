@@ -1,6 +1,6 @@
 <style>
   .main {
-    height: 100vh; /* Adjust the height as needed */
+    height: 90vh; /* Adjust the height as needed */
     overflow-y: auto;
   }
 </style>
@@ -51,16 +51,20 @@
             />
           </div>
           <div class="mb-3">
-            <label for="recipient-name" class="col-form-label"
-              >Category ID</label
-            >
-            <input
-              type="text"
+            <label for="category-select" class="col-form-label">Category</label>
+            <select
+              id="category-select"
+              class="form-select"
               class="form-control"
-              id="recipient-name"
+              aria-label="Default select example"
               name="categoryId"
               ngModel
-            />
+            >
+              <option value="" selected>Select Category</option>
+              <option *ngFor="let category of categories" [value]="category.id">
+                {{ category.title }}
+              </option>
+            </select>
           </div>
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label"
@@ -98,7 +102,7 @@
             </div>
           </div>
           <button type="submit" class="btn btn-primary text-warning">
-            ADD
+            {{buttontxt}}
           </button>
         </form>
       </div>
@@ -137,18 +141,18 @@
             data-bs-toggle="modal"
             data-bs-target="#exampleModal"
             data-bs-whatever="@mdo"
-            (click)="updateDish(dish)"
+            (click)="edit(dish.id)"
+
           >
-            <i class="fas fa-pencil-alt btn-warning"></i>
+            <i class="fas fa-pencil-alt btn-warning" ></i>
             Edit
           </button>
         </td>
         <td>
           <button
             class="btn btn-danger text-white w-50 btn-primary"
-            (click)="delete(dish.id)"
-          >
-            <i class="fas fa-trash-alt text-warning w-50"></i> Delete
+           >
+            <i class="fas fa-trash-alt text-warning" (click)="delete(dish.id)"></i> Delete
           </button>
         </td>
       </tr>
