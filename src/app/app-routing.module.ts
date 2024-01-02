@@ -21,6 +21,7 @@ import { UserorderComponent } from './component/userorder/userorder.component';
 
 
 
+
 const routes: Routes = [
   {path:'user',component:UserComponent,canActivate:[authGuard]},
   {path:'table',component:TableComponent,canActivate:[authGuard]},
@@ -35,7 +36,7 @@ const routes: Routes = [
   {path:'order',component:OrderComponent,canActivate:[authGuard]},
   {path:'',component:IntroComponent},
   {path:'userorder',component:UserorderComponent,canActivate:[authGuard]}
-  
+ 
 
 ];
 

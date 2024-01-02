@@ -4,6 +4,14 @@
     height: 90vh; /* Adjust the height as needed */
     overflow-y: auto;
   }
+  .blurred-background {
+    filter: blur(5px); /* Adjust the blur intensity as needed */
+    pointer-events: none; /* Disable interaction with the blurred background */
+  }
+
+  #lottie-modal {
+    z-index: 1050; /* Ensure the modal is above the blurred background */
+  }
 </style>
 <div class="main">
   <div class="container">
@@ -16,23 +24,41 @@
       <table class="table">
         <thead>
           <tr class="table-primary">
-            <th>Title</th>
-            <th>Description</th>
-            <th>Price</th>
-            <th>Order Status</th>
+            <th class="text-warning bg-primary">Title</th>
+            <th class="text-warning bg-primary">Description</th>
+            <th class="text-warning bg-primary">Price</th>
+            <th class="text-warning bg-primary">Order Status</th>
           </tr>
         </thead>
         <tbody *ngFor="let order of orders">
           <tr *ngFor="let dish of order.dishList; let i = index">
-            <td>{{ dish.title }}</td>
-            <td>{{ dish.description }}</td>
-            <td>{{ dish.price }}</td>
+            <td class="text-danger">{{ dish.title }}</td>
+            <td class="text-danger">{{ dish.description }}</td>
+            <td class="text-danger">{{ dish.price }}</td>
             <!-- Add more properties as needed -->
-            <td>{{ order.orderStatus }}</td>
+            <td class="text-danger">{{ order.orderStatus }}</td>
           </tr>
         </tbody>
       </table>
     </section>
-    <button class="btn btn-success">Place Order</button>
+    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#lottieModal">Place Order</button>
+    
+    <!-- Blurred background -->
+    <div class="col-6 container-fluid blurred-background" *ngIf="isOrderPlaced"></div>
+
+    <!-- Lottie Modal -->
+    <div class="modal" id="lottieModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Order Placed</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <ng-lottie [options]="options"></ng-lottie>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

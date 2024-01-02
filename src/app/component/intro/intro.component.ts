@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Dish } from 'src/app/model/dish';
 import { DishService } from 'src/app/service/dish.service';
-import { PopupComponent } from '../popup/popup.component';
 
 @Component({
   selector: 'app-intro',
@@ -13,29 +12,31 @@ export class IntroComponent implements OnInit {
   filteredDishes: Dish[] = [];
   searchTerm: string = '';
   isSearchVisible = false;
-  constructor(private dishService:DishService){}
+  showPopup = false; // New variable to control the visibility of the popup
+  
+
+  constructor(private dishService: DishService) {}
+
   ngOnInit(): void {
     this.dishService.getAllDish().subscribe({
       next: (response: any) => {
         this.dishes = response.data;
         console.log('dishessss', this.dishes);
       },
-      
-
-      
     });
+
+    // Show popup after 5 seconds (5000 milliseconds)
     setTimeout(() => {
-      // Show the pop-up message
-      const popupComponent = new PopupComponent(); // Instantiate the component
-      // You can append the component to the DOM, trigger a modal, or use any other method to display the pop-up
+      this.showPopup = true;
     }, 5000);
   }
+
   filterDishes(): void {
     this.filteredDishes = this.dishes.filter((dish) =>
       dish.title.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
   }
-  
+
   toggleSearch() {
     this.isSearchVisible = !this.isSearchVisible;
     if (this.isSearchVisible) {
@@ -43,5 +44,4 @@ export class IntroComponent implements OnInit {
       setTimeout(() => document.querySelector('.search-container input'));
     }
   }
-
 }

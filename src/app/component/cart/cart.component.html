@@ -3,26 +3,26 @@
   <br />
   <table class="table table-bordered text-center">
     <thead class="thead-dark">
-      <tr class="table-primary">
-        <th>S.No</th>
-        <th>Dish</th>
-        <th>Quantity</th>
-        <th>Price</th>
+      <tr>
+        <th class="text-warning bg-primary">S.No</th>
+        <th class="text-warning bg-primary">Dish</th>
+        <th class="text-warning bg-primary">Quantity</th>
+        <th class="text-warning bg-primary">Price</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let cart of carts; let i = index">
-        <td>{{ i + 1 }}</td>
-        <td>{{ cart.dishTitle }}</td>
-        <td>{{ cart.count }}</td>
-        <td>{{ cart.price * cart.count }}</td>
+        <td class="text-danger">{{ i + 1 }}</td>
+        <td class="text-danger">{{ cart.dishTitle }}</td>
+        <td class="text-danger">{{ cart.count }}</td>
+        <td class="text-danger">{{ cart.price * cart.count }}</td>
        
       </tr>
       <tr class="rowspan">
         <td></td>
         <td></td> 
-        <td>Get Total</td>
-        <td>Total : {{Total}}</td>
+        <td class="text-danger">Get Total</td>
+        <td class="text-danger">Total : {{Total}}</td>
       </tr>
     </tbody>
   </table>
@@ -40,6 +40,6 @@
     >
       CheckOut
     </button>
-    <button class="btn btn-warning" (click)="back()">Continue Ordering</button>
+    <button class="btn btn-warning text-danger" (click)="back()" >Continue Ordering</button>
   </div>
 </div>

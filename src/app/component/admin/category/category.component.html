@@ -85,16 +85,16 @@
     <table class="table table-bordered text-center">
       <thead class="thead-dark">
         <tr class="table-primary">
-          <th>ID</th>
-          <th>Category</th>
-          <th>Edit</th>
-          <th>Delete</th>
+          <th class="text-warning bg-primary">ID</th>
+          <th class="text-warning bg-primary">Category</th>
+          <th class="text-warning bg-primary">Edit</th>
+          <th class="text-warning bg-primary">Delete</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let category of categories">
-          <td>{{ category.id }}</td>
-          <td>{{ category.title }}</td>
+          <td class="text-danger">{{ category.id }}</td>
+          <td class="text-danger">{{ category.title }}</td>
           <td>
             <button
               type="button"

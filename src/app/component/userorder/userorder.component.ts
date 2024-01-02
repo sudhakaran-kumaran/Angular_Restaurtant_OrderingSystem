@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AnimationOptions } from 'ngx-lottie';
 import { AppUser } from 'src/app/model/appUser';
 import { Dish } from 'src/app/model/dish';
 import { Order } from 'src/app/model/order';
@@ -13,7 +14,11 @@ import { StorageService } from 'src/app/service/storage.service';
 export class UserorderComponent implements OnInit {
   orders: Order[] = [];
   cartItems: { name: string; price: number }[] = [];
+  isOrderPlaced: boolean = false; 
+  options: AnimationOptions = {
+    path: '/assets/ordered.json',
 
+  };
   constructor(
     private orderService: OrderService,
     private storageService: StorageService
@@ -36,4 +41,12 @@ export class UserorderComponent implements OnInit {
   calculateTotal(): number {
     return this.cartItems.reduce((total, item) => total + item.price, 0);
   }
+  placeOrder() {
+    // Perform order placement logic here
+    // For demonstration purposes, let's set a timeout to simulate order placement
+    setTimeout(() => {
+      this.isOrderPlaced = true;
+    }, 2000); // Set a time delay of 2000 milliseconds (2 seconds)
+  }
+  
 }

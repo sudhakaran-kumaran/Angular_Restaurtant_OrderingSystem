@@ -12,4 +12,5 @@ export const authGuard: CanActivateFn = (route, state) => {
 
   return loginService.isLoggedIn();
   
+  
 };

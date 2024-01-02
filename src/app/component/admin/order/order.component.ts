@@ -67,6 +67,8 @@ export class OrderComponent {
   }
   onStatusChange(order: Order): void {
     // Update the order status on the user side
+    console.log(order.id)
+    
     this.orderService
       .updateOrderStatus(order.id!,order.orderStatus!)
       .subscribe({
@@ -78,6 +80,7 @@ export class OrderComponent {
           this.orders = this.orders.map((o: Order) =>
             o.id === order.id ? order : o
           );
+          window.location.reload();
         },
         error: (error) => {
           console.error('Error updating order status:', error);

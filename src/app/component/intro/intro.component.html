@@ -64,30 +64,30 @@
             </li>
           </div>
           <div class="d-flex row">
-          <div
-            class="col-lg-3 col-md-6"
-            *ngFor="let dish of filteredDishes"
-            routerLink="login"
-          >
-            <div class="product-card" style="width: 18rem">
-              <div class="famous-product">
-                <h2 class="fs-2">{{ dish.title }}</h2>
-                <h3>{{ dish.description }}</h3>
-                <img
-                  class="card-img-top"
-                  src="{{
-                    'http://localhost:8080/api/admin/dish/downloadFile/' +
-                      dish.id
-                  }}"
-                  width="200px"
-                  height="200px"
-                />
-                <div class="price">
-                  <h4 class="fs-2">₹ {{ dish.price }}</h4>
+            <div
+              class="col-lg-3 col-md-6"
+              *ngFor="let dish of filteredDishes"
+              routerLink="login"
+            >
+              <div class="product-card" style="width: 18rem">
+                <div class="famous-product">
+                  <h2 class="fs-2">{{ dish.title }}</h2>
+                  <h3>{{ dish.description }}</h3>
+                  <img
+                    class="card-img-top"
+                    src="{{
+                      'http://localhost:8080/api/admin/dish/downloadFile/' +
+                        dish.id
+                    }}"
+                    width="200px"
+                    height="200px"
+                  />
+                  <div class="price">
+                    <h4 class="fs-2">₹ {{ dish.price }}</h4>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
           </div>
         </div>
       </div>
@@ -137,22 +137,18 @@
     </div>
   </div>
   <!---------PRODUCT LIST PRODUCT LIST-------->
-  <div class="container-fluid">
-    <div class="container">
-      <div class="row my-5">
-        <div class="col-12">
-          <div class="heading-section">
-            <h3>Our Top Sell</h3>
-            <h2>Checkout Our Top Sell Burger</h2>
-            <div class="heading-borders">
-              <span class="selected"></span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+
+  <div>
+    <p class="fs-3 mt-3 text-center">Top Spicy Dishes Available Here</p>
+    <p class="fs-3 text-center">Order Your Favourite Food</p>
   </div>
-  <div class="row mx-5" routerLink="login">
+
+  <div
+    class="row mx-5"
+    data-bs-toggle="modal"
+    data-bs-target="#exampleModal"
+    data-bs-whatever="@mdo"
+  >
     <div class="col-lg-3 col-md-6" *ngFor="let dish of dishes">
       <div class="product-card" style="width: 18rem">
         <div class="famous-product">
@@ -172,6 +168,44 @@
       </div>
     </div>
   </div>
+  <div class="d-flex justify-content-center p-3">
+    <button
+      class="btn btn-dark"
+      data-bs-toggle="modal"
+      data-bs-target="#exampleModal"
+      data-bs-whatever="@mdo"
+    >
+      Load More
+    </button>
+  </div>
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">
+                            <p class="fs-2 text-primary text-center">Welcome to Spicy Hut!!!</p>
+                            <p class="fs-5 text-dark">
+                                👉 Indulge in the flavors, savor the moments. Where every bite is a journey, and every order
+                                is a delight! <br>👉 Login now to spice up your experience.🔥🍔👇
+                            </p>
+                        </label>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <button type="button" class="btn btn-secondary d-flex justify-content-end"
+                            data-bs-dismiss="modal" class="mx-2 btn btn-danger" routerLink="intro">Close</button>
+                        <button type="submit" class="btn btn-info text-dark" routerLink="login">Login</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 
   <!--------FOOTER Section FOOTER Section FOOTER Section------->
   <div class="container-fluid footer-section">

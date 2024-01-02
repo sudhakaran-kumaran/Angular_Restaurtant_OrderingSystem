@@ -139,9 +139,9 @@
               ngModel
               required
               #dropdownValid="ngModel"
-              [ngClass]="
-                dropdownValid.invalid && dropdownValid.dirty ? 'is-invalid' : ''
-              "
+              [ngClass]=
+              "  dropdownValid.invalid && dropdownValid.dirty ? 'is-invalid' : ''"
+              
             >
               <option value="" disabled selected>Select an option</option>
 

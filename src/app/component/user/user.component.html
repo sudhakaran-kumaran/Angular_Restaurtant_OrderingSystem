@@ -17,18 +17,18 @@
     <table class="table table-bordered text-center">
       <thead class="thead-dark">
         <tr class="table-primary">
-          <th>S.No</th>
-          <th>Username</th>
-          <th>Name</th>
-          <th>Joined At</th>
+          <th class="text-warning bg-primary">S.No</th>
+          <th class="text-warning bg-primary">Username</th>
+          <th class="text-warning bg-primary">Name</th>
+          <th class="text-warning bg-primary">Joined At</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let user of users">
-          <td>{{ user.id }}</td>
-          <td>{{ user.username }}</td>
-          <td>{{ user.name }}</td>
-          <td>{{ user.createdAt }}</td>
+          <td class="text-danger">{{ user.id }}</td>
+          <td class="text-danger">{{ user.username }}</td>
+          <td class="text-danger">{{ user.name }}</td>
+          <td class="text-danger">{{ user.createdAt }}</td>
         </tr>
       </tbody>
     </table>

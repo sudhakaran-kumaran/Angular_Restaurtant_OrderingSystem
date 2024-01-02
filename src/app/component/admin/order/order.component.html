@@ -15,84 +15,33 @@
     <table class="table table-bordered mt-2">
       <thead>
         <tr>
-          <th scope="col">Order Id</th>
-          <th scope="col">User ID</th>
-          <th scope="col">UserName</th>
-          <!-- <th scope="col">Created At</th> -->
-          <th scope="col">Current Status</th>
-          <th scope="col">Update Status</th>
+          <th scope="col" class="text-warning bg-primary text-center">Order Id</th>
+          <th scope="col" class="text-warning bg-primary text-center">UserName</th>
+          <th scope="col" class="text-warning bg-primary text-center">Current Status</th>
+          <th scope="col" class="text-warning bg-primary w-25 text-center">Update Status</th>
         </tr>
       </thead>
       <tbody id="table">
         <tr *ngFor="let order of orders">
-          <td>{{ order.id }}</td>
-          <td>{{ order.userId }}</td>
-          <td>{{order.name}}</td>
-          <!-- <td>{{order.createdAt}}</td> -->
+          <td class="text-danger text-center">{{ order.id }}</td>
+          <td class="text-danger text-center">{{ order.name }}</td>
           <td>
-            
-              <option value="">{{ order.orderStatus }}</option>
-            
+            <option value="" class="text-primary text-center">{{ order.orderStatus }}</option>
           </td>
           <td>
-            <select [(ngModel)]="order.orderStatus"
-            (change)="onStatusChange(order)">
-              <option value="1">Pending</option>
-              <option value="2">Confirmed</option>
-              <option value="3">Out For Delivery</option>
-              <option value="4">Delivered</option>
+            <select
+              [(ngModel)]="order.orderStatus"
+              (change)="onStatusChange(order)"
+              class="border border-danger mx-5"
+            >
+              <option value="1" class="text-info">Pending</option>
+              <option value="2" class="text-warning">Out For Delivery</option>
+              <option value="3" class="text-success">Delivered</option>
+              <option value="4" class="text-danger">Cancelled</option>
             </select>
+          </td>
         </tr>
       </tbody>
     </table>
-
-    <div>
-      <h2 class="text-primary">Update Order Status</h2>
-      <table>
-        <tr>
-          <td><label for="orderId">Enter Order ID:</label></td>
-          <td><input type="number" [(ngModel)]="orderId" id="orderId" /></td>
-        </tr>
-        <tr>
-          <td><label for="statusId">Enter Status ID:</label></td>
-          <td>
-            <input
-              type="number"
-              id="statusId"
-              class="mt-2"
-            />
-          </td>
-        </tr>
-        <tr>
-          <td colspan="2">
-            <button  class="btn btn-primary mt-2">
-              Update Order Status
-            </button>
-          </td>
-        </tr>
-      </table>
-    </div>
-  </div>
-  <div>
-    <h2 class="text-primary">User Orders</h2>
-    <input type="number" [(ngModel)]="userId" placeholder="Enter User ID" />
-    <!-- <button (click)="getUsersOrder()">Get User Orders</button> -->
-    <ul>
-      <li *ngFor="let order of userOrders">
-        Order ID: {{ order.id }} - User ID: {{ order.userId }} - Status:
-        {{ order.orderStatus }}
-      </li>
-    </ul>
-  </div>
-  <div>
-    <h2 class="text-primary">All Order Status</h2>
-    <button (click)="getAllOrderStatus()" class="btn btn-primary">
-      Get All Order Status
-    </button>
-    <ul>
-      <li *ngFor="let status of orderStatusList">
-        Status ID: {{ status.orderId }} - Status: {{ status.statusId }}
-      </li>
-    </ul>
   </div>
 </div>

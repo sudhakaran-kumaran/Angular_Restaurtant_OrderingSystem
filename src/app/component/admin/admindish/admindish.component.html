@@ -119,20 +119,20 @@
   <table class="table table-bordered text-center">
     <thead class="thead-dark">
       <tr class="table-primary">
-        <th>S.No</th>
-        <th>Dish Name</th>
-        <th>Description</th>
-        <th>Price</th>
-        <th>Edit</th>
-        <th>Delete</th>
+        <th class="text-warning bg-primary">S.No</th>
+        <th class="text-warning bg-primary">Dish Name</th>
+        <th class="text-warning bg-primary">Description</th>
+        <th class="text-warning bg-primary">Price</th>
+        <th class="text-warning bg-primary">Edit</th>
+        <th class="text-warning bg-primary">Delete</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let dish of dishes">
-        <td>{{ dish.id }}</td>
-        <td>{{ dish.title }}</td>
-        <td>{{ dish.description }}</td>
-        <td>{{ dish.price }}</td>
+        <td class="text-danger">{{ dish.id }}</td>
+        <td class="text-danger">{{ dish.title }}</td>
+        <td class="text-danger">{{ dish.description }}</td>
+        <td class="text-danger">{{ dish.price }}</td>
 
         <td>
           <button

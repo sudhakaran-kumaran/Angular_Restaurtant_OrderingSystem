@@ -25,7 +25,6 @@ import { OrderComponent } from './component/admin/order/order.component';
 import { IntroComponent } from './component/intro/intro.component';
 import { IonicModule } from '@ionic/angular';
 import { UserorderComponent } from './component/userorder/userorder.component';
-import { PopupComponent } from './component/popup/popup.component';
 
 export function playerFactory() {
   return player;
@@ -49,7 +48,7 @@ export function playerFactory() {
     NavComponent,
     OrderComponent,
     IntroComponent,
-    PopupComponent
+    
   ],
   imports: [
     BrowserModule,
