@@ -49,7 +49,7 @@ export class HomeComponent implements OnInit{
   }
   getCartItemCount(id: number): number {
     let count: number =
-      this.userCart.find((cartDish) => cartDish.dish.id === id)?.count ?? 0;
+      this.userCart.find((cartDish) => cartDish.dish!.id === id)?.count ?? 0;
     return count;
   }
   addtoCart(dish: Dish) {
@@ -69,7 +69,9 @@ export class HomeComponent implements OnInit{
         this.userCart.push(response.data);
       }
     });
+    
   }
+  
   
 }
 

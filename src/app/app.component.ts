@@ -43,8 +43,9 @@ export class AppComponent implements OnInit {
     private storageservice:StorageService,
     private cartService:CartService
   ) {}
-
+  
   ngOnInit(): void {
+    window.onclick = () => this.filterReset();
     this.dishService.getAllDish().subscribe({
       next: (response: any) => {
         this.dishes = response.data;
@@ -107,5 +108,10 @@ export class AppComponent implements OnInit {
         this.userCart.push(response.data);
       }
     });
+  }
+  filterReset(): void {
+    this.isSearchVisible = false;
+    this.searchTerm = '';
+    this.filteredDishes = [];
   }
 }

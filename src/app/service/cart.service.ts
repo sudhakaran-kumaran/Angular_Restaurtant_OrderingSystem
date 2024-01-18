@@ -9,6 +9,9 @@ import { Cart } from '../model/cart';
   providedIn: 'root',
 })
 export class CartService {
+  cartCountUpdate(increamentCount:Cart):Observable<AppResponse> {
+    return this.http.post<AppResponse>(`${urlEndpoint.baseUrl}/cart`,increamentCount);
+  }
   checkout(userId : number ) {
      return this.http.get<AppResponse>(`${urlEndpoint.baseUrl}/order`);
 

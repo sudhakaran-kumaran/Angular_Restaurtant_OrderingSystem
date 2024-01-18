@@ -9,7 +9,7 @@ import { DishService } from 'src/app/service/dish.service';
 })
 export class IntroComponent implements OnInit {
   dishes: Dish[] = [];
-  filteredDishes: Dish[] = [];
+    filteredDishes: Dish[] = [];
   searchTerm: string = '';
   isSearchVisible = false;
   showPopup = false; // New variable to control the visibility of the popup
@@ -43,5 +43,16 @@ export class IntroComponent implements OnInit {
       // Optionally, you can focus on the input field when it becomes visible
       setTimeout(() => document.querySelector('.search-container input'));
     }
+  }
+  itemsPerPage: number = 4;
+  currentPage: number = 1;
+  getPageNumbers(): number[] {
+    const pageCount = Math.ceil(this.dishes.length / this.itemsPerPage);
+    return Array.from({ length: pageCount }, (_, index) => index + 1);
+  }
+ 
+  //returns last page
+  getLastPage(): number {
+    return this.getPageNumbers().slice(-1)[0] || 1;
   }
 }

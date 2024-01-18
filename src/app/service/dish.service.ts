@@ -11,11 +11,16 @@ import { Dish } from '../model/dish';
 export class DishService {
   constructor(private http: HttpClient) {}
 
-  updateDish(editDish : FormData) : Observable<AppResponse>{
-    return this.http.put<AppResponse>(`${urlEndpoint.baseUrl}/admin/dish/update`,editDish);
+  updateDish(editDish: FormData): Observable<AppResponse> {
+    return this.http.put<AppResponse>(
+      `${urlEndpoint.baseUrl}/admin/dish/update`,
+      editDish
+    );
   }
-  deleteDish(id:number) : Observable<AppResponse> {
-    return this.http.delete<AppResponse>(`${urlEndpoint.baseUrl}/admin/dish/${id}`);
+  deleteDish(id: number): Observable<AppResponse> {
+    return this.http.delete<AppResponse>(
+      `${urlEndpoint.baseUrl}/admin/dish/${id}`
+    );
   }
   addDish(addDish: FormData): Observable<AppResponse> {
     return this.http.post<AppResponse>(
@@ -24,8 +29,6 @@ export class DishService {
     );
   }
   getAllDish(): Observable<AppResponse> {
-    console.log("hiii iam selvin");
-    
     return this.http.get<AppResponse>(`${urlEndpoint.baseUrl}/admin/dish/all`);
   }
 }

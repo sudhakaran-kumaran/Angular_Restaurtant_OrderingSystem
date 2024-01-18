@@ -35,7 +35,6 @@ export class CartComponent implements OnInit {
   userOrder: Order[] = [];
   currentorder: Order | undefined;
   userId: number = this.storageService.getLoggedInUser().id;
-  Total: number = 0;
   ngOnInit(): void {
     this.getUserCart();
   }
@@ -44,8 +43,6 @@ export class CartComponent implements OnInit {
     this.cartService.getUserCart(this.userId).subscribe({
       next: (response: any) => {
         this.carts = response.data.cartRequests;
-        this.Total = this.carts.reduce((total, cart) => total + (cart.price * cart.count), 0);
-        // console.log(response);
       },
       error: (err) => {
         let message: string = err?.error?.error?.message;
@@ -118,16 +115,7 @@ export class CartComponent implements OnInit {
   }
   // Inside your CartComponent class
 
-  getTotal(): number | undefined {
-    console.log('clicked');
-
-    try {
-      return this.carts.reduce((sum, cart) => sum + cart.price * cart.count, 0);
-    } catch (error) {
-      console.error('Error calculating total:', error);
-      return undefined;
-    }
-  }
+  
 
   checkout(): void {
     const user = this.storageService.getLoggedInUser();
@@ -140,5 +128,49 @@ export class CartComponent implements OnInit {
   back(): void {
     this.router.navigate(['/home']);
   }
-  
+  increamentCount(cart: Cart) {
+    console.log('out');
+    console.log(cart);
+
+    if (cart.dishId && cart.count !== null && cart.count >= 1) {
+      console.log('in');
+
+      cart.count += 1;
+      let increaseCount: Cart = {
+        id: 0,
+        userId: this.userId,
+        dishId: cart.dishId,
+        count: cart.count,
+      };
+      console.log(increaseCount, 'new');
+
+      this.cartService
+        .cartCountUpdate(increaseCount)
+        .subscribe((response) => console.log(response));
+    }
+
+  }
+
+  decrementCount(cart: Cart) {
+    if (cart.dishId && cart.count !== null && cart.count > 1) {
+      cart.count -= 1;
+      let decreaseCount: Cart = {
+        id: 0,
+        userId: this.userId,
+        dishId: cart.dishId,
+        count: cart.count,
+      };
+      this.cartService
+        .cartCountUpdate(decreaseCount)
+        .subscribe((response) => console.log(response));
+    }
+  }
+  calculateTotal(): number {
+    let total = 0;
+    for (const cart of this.carts) {
+      total += cart.price! * cart.count;
+    }
+    return total;
+  }
+
 }

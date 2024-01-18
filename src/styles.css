@@ -26,7 +26,11 @@
 body {
   font-family: "Exo 2", sans-serif;
   background-color: var(--primary-50);
-  
+  background-image: url('\assets\1000_F_580831610_TK2L5H3BZDAeqVMuKCcNphs86FOYtxrR.jpg') !important;
+  background-size: cover !important;
+  background-position: center;
+  background-repeat: no-repeat;
+  backdrop-filter: blur(1px);  
 }
 .reg{
   color: yellowgreen;

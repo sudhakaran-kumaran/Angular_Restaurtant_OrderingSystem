@@ -41,12 +41,22 @@ export class UserorderComponent implements OnInit {
   calculateTotal(): number {
     return this.cartItems.reduce((total, item) => total + item.price, 0);
   }
-  placeOrder() {
-    // Perform order placement logic here
-    // For demonstration purposes, let's set a timeout to simulate order placement
-    setTimeout(() => {
-      this.isOrderPlaced = true;
-    }, 2000); // Set a time delay of 2000 milliseconds (2 seconds)
-  }
+  
+    // placeOrder() {
+    //   // Perform order placement logic here
+    //   // For demonstration purposes, let's set a timeout to simulate order placement
+    //   setTimeout(() => {
+    //     // Simulate order placement
+    //     this.isOrderPlaced = true;
+    
+    //     // After 5 seconds, change the order status to "Cancelled"
+    //     setTimeout(() => {
+    //       this.orders.forEach(order => {
+    //         order.orderStatus = 'Cancelled';
+    //       });
+    //     }, 3000); // Set a time delay of 5000 milliseconds (5 seconds)
+    //   }, 2000); // Set a time delay of 2000 milliseconds (2 seconds)
+    // }
+    
   
 }

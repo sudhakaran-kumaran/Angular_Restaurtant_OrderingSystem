@@ -14,15 +14,24 @@
       <tr *ngFor="let cart of carts; let i = index">
         <td class="text-danger">{{ i + 1 }}</td>
         <td class="text-danger">{{ cart.dishTitle }}</td>
-        <td class="text-danger">{{ cart.count }}</td>
-        <td class="text-danger">{{ cart.price * cart.count }}</td>
-       
+        <td class="text-danger">
+          <div class="text-center">
+            <button class="btn btn-sm" (click)="decrementCount(cart)">
+              <i class="fa fa-minus"></i>
+            </button>
+            <span class="mx-2 my-0">{{ cart.count }}</span>
+            <button class="btn btn-sm" (click)="increamentCount(cart)">
+              <i class="fa fa-plus"></i>
+            </button>
+          </div>
+        </td>
+        <td class="text-danger">₹ {{ cart.price! * cart.count }}</td>
       </tr>
       <tr class="rowspan">
         <td></td>
-        <td></td> 
-        <td class="text-danger">Get Total</td>
-        <td class="text-danger">Total : {{Total}}</td>
+        <td></td>
+        <td class="text-danger">Total</td>
+        <td class="text-danger">₹ {{ calculateTotal() }}</td>
       </tr>
     </tbody>
   </table>
@@ -36,10 +45,11 @@
       data-bs-target="#exampleModal"
       data-bs-whatever="@mdo"
       (click)="checkout()"
-      
     >
       CheckOut
     </button>
-    <button class="btn btn-warning text-danger" (click)="back()" >Continue Ordering</button>
+    <button class="btn btn-warning text-danger" (click)="back()">
+      Continue Ordering
+    </button>
   </div>
 </div>

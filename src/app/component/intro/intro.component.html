@@ -65,8 +65,10 @@
           </div>
           <div class="d-flex row">
             <div
-              class="col-lg-3 col-md-6"
-              *ngFor="let dish of filteredDishes"
+              class="col-lg-3 col-md-6 bg-warning"
+              *ngFor="
+                let dish of filteredDishes
+              "
               routerLink="login"
             >
               <div class="product-card" style="width: 18rem">
@@ -94,7 +96,7 @@
     </nav>
     <div
       id="carouselExampleControls"
-      class="carousel slide"
+      class="carousel slide"  
       data-bs-ride="carousel"
     >
       <div class="carousel-inner">
@@ -139,8 +141,10 @@
   <!---------PRODUCT LIST PRODUCT LIST-------->
 
   <div>
-    <p class="fs-3 mt-3 text-center">Top Spicy Dishes Available Here</p>
-    <p class="fs-3 text-center">Order Your Favourite Food</p>
+    <p class="fs-3 mt-3 text-center text-white">
+      Top Spicy Dishes Available Here
+    </p>
+    <p class="fs-3 text-center text-white">Order Your Favourite Food</p>
   </div>
 
   <div
@@ -149,7 +153,10 @@
     data-bs-target="#exampleModal"
     data-bs-whatever="@mdo"
   >
-    <div class="col-lg-3 col-md-6" *ngFor="let dish of dishes">
+    <div class="col-lg-3 col-md-6" *ngFor="let dish of dishes.slice(
+      (currentPage - 1) * itemsPerPage,
+      currentPage * itemsPerPage
+    )" role="button">
       <div class="product-card" style="width: 18rem">
         <div class="famous-product">
           <h2 class="fs-2">{{ dish.title }}</h2>
@@ -168,6 +175,26 @@
       </div>
     </div>
   </div>
+
+  <!-- pagination -->
+  <ul
+    class="pagination justify-content-center mt-3 custom-pagination"
+    *ngIf="dishes.length > 0"
+  >
+    <li class="page-item" [class.disabled]="currentPage === 1">
+      <a class="page-link" (click)="currentPage = currentPage - 1">Previous</a>
+    </li>
+    <li
+      class="page-item text-danger"
+      *ngFor="let page of getPageNumbers()"
+      [class.active]="currentPage === page"
+    >
+      <a class="page-link" (click)="currentPage = page">{{ page }}</a>
+    </li>
+    <li class="page-item" [class.disabled]="currentPage === getLastPage()">
+      <a class="page-link" (click)="currentPage = currentPage + 1">Next</a>
+    </li>
+  </ul>
   <div class="d-flex justify-content-center p-3">
     <button
       class="btn btn-dark"
@@ -178,34 +205,60 @@
       Load More
     </button>
   </div>
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
     <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="mb-3">
-                        <label for="recipient-name" class="col-form-label">
-                            <p class="fs-2 text-primary text-center">Welcome to Spicy Hut!!!</p>
-                            <p class="fs-5 text-dark">
-                                👉 Indulge in the flavors, savor the moments. Where every bite is a journey, and every order
-                                is a delight! <br>👉 Login now to spice up your experience.🔥🍔👇
-                            </p>
-                        </label>
-                    </div>
-                    <div class="d-flex justify-content-end">
-                        <button type="button" class="btn btn-secondary d-flex justify-content-end"
-                            data-bs-dismiss="modal" class="mx-2 btn btn-danger" routerLink="intro">Close</button>
-                        <button type="submit" class="btn btn-info text-dark" routerLink="login">Login</button>
-                    </div>
-                </form>
-            </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
         </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label">
+                <p class="fs-2 text-primary text-center">
+                  Welcome to Spicy Hut!!!
+                </p>
+                <p class="fs-5 text-dark">
+                  👉 Indulge in the flavors, savor the moments. Where every bite
+                  is a journey, and every order is a delight! <br />👉 Login now
+                  to spice up your experience.🔥🍔👇
+                </p>
+              </label>
+            </div>
+            <div class="d-flex justify-content-end">
+              <button
+                type="button"
+                class="btn btn-secondary d-flex justify-content-end"
+                data-bs-dismiss="modal"
+                class="mx-2 btn btn-danger"
+                routerLink="intro"
+              >
+                Close
+              </button>
+              <button
+                type="submit"
+                class="btn btn-info text-dark"
+                routerLink="login"
+              >
+                Login
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
-</div>
-
+  </div>
 
   <!--------FOOTER Section FOOTER Section FOOTER Section------->
   <div class="container-fluid footer-section">

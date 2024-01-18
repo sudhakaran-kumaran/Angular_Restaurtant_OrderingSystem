@@ -11,7 +11,7 @@
 
   .product-card:hover .card-img-top {
     transform: scale(1.1);
-  } 
+  }
 
   .add-to-cart-message {
     position: absolute;
@@ -26,7 +26,7 @@
     border-radius: 5px;
     text-align: center;
   }
-
+ 
   .product-card:hover .add-to-cart-message {
     opacity: 1;
   }
@@ -86,6 +86,7 @@
       class="col-lg-3 col-md-6 mb-4 cursor"
       *ngFor="let dish of dishes"
       (click)="addtoCart(dish)"
+      
     >
       <div class="product-card">
         <div class="famous-product p-5">

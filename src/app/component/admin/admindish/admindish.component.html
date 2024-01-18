@@ -148,11 +148,11 @@
             Edit
           </button>
         </td>
-        <td>
+        <td (click)="delete(dish.id)">
           <button
             class="btn btn-danger text-white w-50 btn-primary"
            >
-            <i class="fas fa-trash-alt text-warning" (click)="delete(dish.id)"></i> Delete
+            <i class="fas fa-trash-alt text-warning" ></i> Delete
           </button>
         </td>
       </tr>
