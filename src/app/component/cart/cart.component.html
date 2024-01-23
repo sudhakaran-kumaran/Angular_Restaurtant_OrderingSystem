@@ -8,6 +8,7 @@
         <th class="text-warning bg-primary">Dish</th>
         <th class="text-warning bg-primary">Quantity</th>
         <th class="text-warning bg-primary">Price</th>
+        <th class="text-warning bg-primary">Delete</th>
       </tr>
     </thead>
     <tbody>
@@ -26,6 +27,14 @@
           </div>
         </td>
         <td class="text-danger">₹ {{ cart.price! * cart.count }}</td>
+        <td class="text-dark">
+          <i
+            class="fas fa-trash-alt text-danger"
+            (click)="deleteCart(cart.id, cart.dishId)"
+          >
+            
+          </i>
+        </td>
       </tr>
       <tr class="rowspan">
         <td></td>

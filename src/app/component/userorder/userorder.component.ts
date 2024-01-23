@@ -14,10 +14,9 @@ import { StorageService } from 'src/app/service/storage.service';
 export class UserorderComponent implements OnInit {
   orders: Order[] = [];
   cartItems: { name: string; price: number }[] = [];
-  isOrderPlaced: boolean = false; 
+  isOrderPlaced: boolean = false;
   options: AnimationOptions = {
     path: '/assets/ordered.json',
-
   };
   constructor(
     private orderService: OrderService,
@@ -32,6 +31,11 @@ export class UserorderComponent implements OnInit {
       },
     });
     // window.location.reload();
+
+    setTimeout(() => {
+      console.log('Delayed for 1 second.');
+      this.onStatusChange(this.orders);
+    }, 5000);
   }
 
   addToCart(item: { name: string; description: string; price: number }) {
@@ -41,22 +45,20 @@ export class UserorderComponent implements OnInit {
   calculateTotal(): number {
     return this.cartItems.reduce((total, item) => total + item.price, 0);
   }
-  
-    // placeOrder() {
-    //   // Perform order placement logic here
-    //   // For demonstration purposes, let's set a timeout to simulate order placement
-    //   setTimeout(() => {
-    //     // Simulate order placement
-    //     this.isOrderPlaced = true;
-    
-    //     // After 5 seconds, change the order status to "Cancelled"
-    //     setTimeout(() => {
-    //       this.orders.forEach(order => {
-    //         order.orderStatus = 'Cancelled';
-    //       });
-    //     }, 3000); // Set a time delay of 5000 milliseconds (5 seconds)
-    //   }, 2000); // Set a time delay of 2000 milliseconds (2 seconds)
-    // }
-    
-  
+
+  onStatusChange(orders: Order[]): void {
+    // Update the order status on the user side
+    orders.forEach((order) => {
+      this.orderService
+        .updateOrderStatus(order.id!, 4) // Assuming the second argument is the new status
+        .subscribe({
+          next: (response: any) => {
+            this.orders = response.data;
+          },
+          error: (error) => {
+            console.error('Error updating order status:', error);
+          },
+        });
+    });
+  }
 }

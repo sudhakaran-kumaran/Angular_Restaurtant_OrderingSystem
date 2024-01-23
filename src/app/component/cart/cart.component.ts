@@ -55,44 +55,44 @@ export class CartComponent implements OnInit {
     this.authService.logout();
   }
 
-  addtoCart(id: number) {
-    let user: AppUser = this.storageService.getLoggedInUser();
-    const existingCartItem = this.carts.find(
-      (cartItem) => cartItem.dishId === id
-    );
-    if (existingCartItem) {
-      existingCartItem.count++;
-    } else {
-      const Cart: Cart = {
-        id: 0,
-        userId: user.id,
-        dishId: id,
-        dish: {
-          id: 0,
-          title: '',
-          categoryId: 0,
-          description: '',
-          price: 0,
-        },
-        dishTitle: '',
-        count: 0,
-        price: 0,
-      };
-      console.log(Cart);
+  // addtoCart(id: number) {
+  //   let user: AppUser = this.storageService.getLoggedInUser();
+  //   const existingCartItem = this.carts.find(
+  //     (cartItem) => cartItem.dishId === id
+  //   );
+  //   if (existingCartItem) {
+  //     existingCartItem.count++;
+  //   } else {
+  //     const Cart: Cart = {
+  //       id: 0,
+  //       userId: user.id,
+  //       dishId: id,
+  //       dish: {
+  //         id: 0,
+  //         title: '',
+  //         categoryId: 0,
+  //         description: '',
+  //         price: 0,
+  //       },
+  //       dishTitle: '',
+  //       count: 0,
+  //       price: 0,
+  //     };
+  //     console.log(Cart);
 
-      this.cartService.addCart(Cart).subscribe({
-        next: (response: AppResponse) => {
-          this.carts.push(response.data);
-          console.log('carts..', this.carts);
-          this.ngOnInit();
-        },
-        error: (err) => {
-          let message: string = err?.error?.error?.message;
-          this.error = message.includes(',') ? message.split(',')[0] : message;
-        },
-      });
-    }
-  }
+  //     this.cartService.addCart(Cart).subscribe({
+  //       next: (response: AppResponse) => {
+  //         this.carts.push(response.data);
+  //         console.log('carts..', this.carts);
+  //         this.ngOnInit();
+  //       },
+  //       error: (err) => {
+  //         let message: string = err?.error?.error?.message;
+  //         this.error = message.includes(',') ? message.split(',')[0] : message;
+  //       },
+  //     });
+  //   }
+  // }
   loadUserDetails() {
     this.userService.getAllUsers().subscribe((response: AppResponse) => {
       if (response && response.data && Array.isArray(response.data)) {
@@ -113,9 +113,6 @@ export class CartComponent implements OnInit {
       }
     });
   }
-  // Inside your CartComponent class
-
-  
 
   checkout(): void {
     const user = this.storageService.getLoggedInUser();
@@ -124,6 +121,7 @@ export class CartComponent implements OnInit {
     }
     this.router.navigate(['/home']);
   }
+
   placeorder(): void {}
   back(): void {
     this.router.navigate(['/home']);
@@ -148,23 +146,30 @@ export class CartComponent implements OnInit {
         .cartCountUpdate(increaseCount)
         .subscribe((response) => console.log(response));
     }
-
   }
 
   decrementCount(cart: Cart) {
-    if (cart.dishId && cart.count !== null && cart.count > 1) {
+    if (cart.dishId && cart.count !== null && cart.count > 0) {
       cart.count -= 1;
-      let decreaseCount: Cart = {
-        id: 0,
-        userId: this.userId,
-        dishId: cart.dishId,
-        count: cart.count,
-      };
-      this.cartService
-        .cartCountUpdate(decreaseCount)
-        .subscribe((response) => console.log(response));
+  
+      if (cart.count === 0) {
+        // If count is zero, call deleteCart to remove the item
+        this.deleteCart(cart.id, cart.dishId);
+      } else {
+        // If count is not zero, update the count in the cart
+        let decreaseCount: Cart = {
+          id: 0,
+          userId: this.userId,
+          dishId: cart.dishId,
+          count: cart.count,
+        };
+        this.cartService
+          .cartCountUpdate(decreaseCount)
+          .subscribe((response) => console.log(response));
+      }
     }
   }
+  
   calculateTotal(): number {
     let total = 0;
     for (const cart of this.carts) {
@@ -172,5 +177,15 @@ export class CartComponent implements OnInit {
     }
     return total;
   }
+  deleteCart(cartId: number | undefined, dishId: number | undefined): void {
+    console.log('clicked');
+    console.log(cartId, 'cartid', dishId, 'deisokkd');
 
+    this.cartService.deleteUserCart(cartId!, dishId!).subscribe({
+      next: (cart: Cart[]) => {
+        this.carts = cart;
+        this.ngOnInit();
+      },
+    });
+  }
 }

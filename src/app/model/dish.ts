@@ -9,4 +9,5 @@ export interface Dish {
     price:number,
     photo?:FileType,
     count?:number
+    orderTime?:string;
 }

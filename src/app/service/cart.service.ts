@@ -26,4 +26,7 @@ export class CartService {
   addCart(addCart: Cart): Observable<AppResponse> {
     return this.http.post<AppResponse>(`${urlEndpoint.baseUrl}/cart`,addCart);
   }
+  deleteUserCart(cartId:number,dishId:number):Observable<Cart[]>{
+    return this.http.delete<Cart[]>(`${urlEndpoint.baseUrl}/cart/${cartId}/${dishId}`);
+  }
 }

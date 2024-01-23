@@ -14,28 +14,34 @@
   }
 </style>
 <div class="main">
+  <header>
+    <h1 class="fs-2 text-white">Welcome to SpicyHut</h1>
+    <p class="fs-4 text-white">Order your favorite food!</p>
+  </header>
+  
   <div class="container">
-    <header>
-      <h1 class="fs-2 text-white">Welcome to SpicyHut</h1>
-      <p class="fs-4 text-white">Order your favorite food!</p>
-    </header>
-
     <section class="order-table">
-      <table class="table">
+      <table class="table table-dark">
         <thead>
-          <tr class="table-primary">
+          <tr class="table table-dark">
+            <th class="text-warning bg-primary">Ordered Date</th>
             <th class="text-warning bg-primary">Title</th>
             <th class="text-warning bg-primary">Description</th>
+            <th class="text-warning bg-primary">Count</th>
             <th class="text-warning bg-primary">Price</th>
+            <th class="text-warning bg-primary">Total</th>
             <th class="text-warning bg-primary">Order Status</th>
           </tr>
         </thead>
         <tbody *ngFor="let order of orders">
           <tr *ngFor="let dish of order.dishList; let i = index">
+            <td class="text-danger">{{ dish.orderTime|date }}</td>
             <td class="text-danger">{{ dish.title }}</td>
             <td class="text-danger">{{ dish.description }}</td>
+            <td class="text-danger">{{ dish.count }}</td>
             <td class="text-danger">{{ dish.price }}</td>
-            <!-- Add more properties as needed -->
+            <td class="text-danger">{{dish.price * dish.count}}</td>
+
             <td class="text-danger">{{ order.orderStatus }}</td>
           </tr>
         </tbody>
@@ -44,7 +50,7 @@
     <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#lottieModal">Place Order</button>
     
     <!-- Blurred background -->
-    <div class="col-6 container-fluid blurred-background" *ngIf="isOrderPlaced"></div>
+    <div class="col container-fluid blurred-background" *ngIf="isOrderPlaced"></div>
 
     <!-- Lottie Modal -->
     <div class="modal" id="lottieModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

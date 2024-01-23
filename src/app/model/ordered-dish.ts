@@ -4,4 +4,5 @@ export interface OrderedDish {
     description:string;
     price:number;
     count:number;
+    orderTime?:string;
 }

@@ -19,8 +19,6 @@ export class OrderService  {
     return this.http.post<AppResponse>(`${urlEndpoint.baseUrl}/order`,order);
   }
   updateOrderStatus(orderId:number,statusId:number) : Observable<AppResponse> {
-
-    
     let setStatus={
       orderId:orderId,
       statusId:statusId

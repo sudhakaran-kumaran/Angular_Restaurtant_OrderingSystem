@@ -5,7 +5,7 @@ import { Table } from "./table";
 export interface Order {
     id?:number;
     dishList?:OrderedDish[];
-    userId:number;
+    userId?:number;
     tableId?:number,
     username?:String;
     name?: String;
@@ -13,6 +13,6 @@ export interface Order {
     statusID?:number;
     orderStatus?:number;
     photo?:FileType;
-    createdAt?:string;
+    orderTime?:string;
     
 }

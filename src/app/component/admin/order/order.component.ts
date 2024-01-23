@@ -65,6 +65,7 @@ export class OrderComponent {
       this.orderStatusList = response.data;
     });
   }
+  
   onStatusChange(order: Order): void {
     // Update the order status on the user side
     console.log(order.id)
